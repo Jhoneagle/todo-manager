@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/taskmanager-webapp",
+            "outputPath": "dist/todo-manager",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "taskmanager-webapp:build:production"
+              "browserTarget": "todo-manager:build:production"
             },
             "development": {
-              "browserTarget": "taskmanager-webapp:build:development"
+              "browserTarget": "todo-manager:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "taskmanager-webapp:build"
+            "browserTarget": "todo-manager:build"
           }
         },
         "test": {
@@ -109,5 +109,5 @@
       }
     }
   },
-  "defaultProject": "taskmanager-webapp"
+  "defaultProject": "todo-manager"
 }
