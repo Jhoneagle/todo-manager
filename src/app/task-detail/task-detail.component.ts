@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {TaskNote} from "../models/taskNote";
+import {TaskNote} from "../types/taskNote";
 import {TaskService} from "../services/task.service";
-import {TaskComment} from "../models/taskComment";
+import {TaskComment} from "../types/taskComment";
 import {CommentService} from "../services/comment.service";
 
 @Component({

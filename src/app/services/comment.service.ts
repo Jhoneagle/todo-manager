@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
-import {TaskComment} from "../models/taskComment";
+import {TaskComment} from "../types/taskComment";
 
 @Injectable({
   providedIn: 'root'

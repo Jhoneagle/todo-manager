@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskNote} from "../models/taskNote";
+import {TaskNote} from "../types/taskNote";
 import {TaskService} from "../services/task.service";
 
 @Component({

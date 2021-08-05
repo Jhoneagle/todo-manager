@@ -1,5 +1,5 @@
-import {TaskNote, TaskStatus} from "./models/taskNote";
-import {TaskComment} from "./models/taskComment";
+import {TaskNote, TaskStatus} from "./types/taskNote";
+import {TaskComment} from "./types/taskComment";
 
 export const TASKS: TaskNote[] = [
   {

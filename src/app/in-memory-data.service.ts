@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import {TaskNote} from "./models/taskNote";
-import {TaskComment} from "./models/taskComment";
+import {TaskNote} from "./types/taskNote";
+import {TaskComment} from "./types/taskComment";
 import {TASKS, COMMENTS} from "./mock-data";
 
 @Injectable({

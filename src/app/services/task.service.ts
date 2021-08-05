@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
-import {TaskNote} from "../models/taskNote";
+import {TaskNote} from "../types/taskNote";
 
 @Injectable({
   providedIn: 'root'
