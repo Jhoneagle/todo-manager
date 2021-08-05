@@ -1,7 +1,19 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/tasks">Tasks</a>
-  <a routerLink="/newTask">Add task</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<div class="container">
+  <h1>{{title}}</h1>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tasks">Tasks</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/newTask">Add task</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
+</div>
