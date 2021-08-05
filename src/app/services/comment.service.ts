@@ -9,7 +9,7 @@ import {TaskComment} from "../models/taskComment";
 @Injectable({
   providedIn: 'root'
 })
-export class commentService {
+export class CommentService {
   private commentsUrl = 'api/comments';
 
   httpOptions = {
@@ -18,8 +18,8 @@ export class commentService {
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
-  getComments(): Observable<TaskComment[]> {
-    return this.http.get<TaskComment[]>(this.commentsUrl)
+  getComments(taskId: number): Observable<TaskComment[]> {
+    return this.http.get<TaskComment[]>(`${this.commentsUrl}/?taskId=${taskId}`)
     .pipe(
       catchError(this.handleError<TaskComment[]>('getComments', []))
     );

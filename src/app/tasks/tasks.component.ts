@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TaskNote} from "../models/taskNote";
+import {TaskService} from "../services/task.service";
 
 @Component({
   selector: 'app-tasks',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks.component.css']
 })
 export class TasksComponent implements OnInit {
+  tasks: TaskNote[] = [];
 
-  constructor() { }
+  constructor(private heroService: TaskService) {}
 
   ngOnInit(): void {
+    this.getData();
   }
 
+  getData(): void {
+    this.heroService.getTasks().subscribe((tasks) => this.tasks = tasks);
+  }
+
+  delete(tasks: TaskNote): void {
+    this.tasks = this.tasks.filter(t => t !== tasks);
+    this.heroService.deleteTask(tasks.id).subscribe();
+  }
 }

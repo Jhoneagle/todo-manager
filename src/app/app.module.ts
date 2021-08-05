@@ -13,6 +13,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { TaskFormComponent } from './task-form/task-form.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TaskFormComponent } from './task-form/task-form.component';
     TasksComponent,
     MessagesComponent,
     TaskDetailComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    CommentFormComponent
   ],
   imports: [
     HttpClientModule,
