@@ -9,7 +9,7 @@ import {TASKS, COMMENTS} from "./mock-data";
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    return {TASKS, COMMENTS};
+    return {tasks: TASKS, comments: COMMENTS};
   }
 
   genId<T extends TaskNote | TaskComment>(table: T[]): number {

@@ -31,16 +31,19 @@ export const TASKS: TaskNote[] = [
 export const COMMENTS: TaskComment[] = [
   {
     id: 4,
+    title: 'MOI!',
     content: 'Moro :)',
     created: new Date()
   },
   {
     id: 5,
+    title: 'Hälyytys',
     content: 'WIIIWUUUWIIIIWUUU!',
     created: new Date()
   },
   {
     id: 6,
+    title: 'Testi kommentti',
     content: 'Nyt toimii!',
     created: new Date()
   }
