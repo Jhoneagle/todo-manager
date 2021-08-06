@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {TaskStatus} from "../types/taskNote";
+import {TaskNote, TaskStatus} from "../types/taskNote";
+import {TaskService} from "../services/task.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-task-form',
@@ -10,7 +12,8 @@ import {TaskStatus} from "../types/taskNote";
 export class TaskFormComponent implements OnInit {
   taskForm = this.fb.group({
     title: ['', Validators.required],
-    description: ['', Validators.required],
+    description: [''],
+    startDate: [],
     status: [undefined, Validators.required],
   });
 
@@ -18,16 +21,24 @@ export class TaskFormComponent implements OnInit {
     TaskStatus.Pending,
     TaskStatus.InProgress,
     TaskStatus.Done,
-    TaskStatus.Abort
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private taskService: TaskService,
+  ) {}
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.taskForm.value);
+    let toSave = {
+      ...this.taskForm.value,
+      create: new Date(),
+    }
+
+    this.taskService.addTask(toSave as TaskNote).subscribe();
+    this.router.navigateByUrl('/tasks');
   }
 }

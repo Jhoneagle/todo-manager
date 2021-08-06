@@ -1,7 +1,7 @@
 <ul class="list-group tasks">
   <li *ngFor="let task of tasks" class="list-group-item">
     <a routerLink="/tasks/{{task.id}}" class="nav-link d-inline-block">
-      <span class="badge badge-info">{{task.status}}</span> {{task.title}}
+      <span class="badge bg-primary">{{task.status}}</span> {{task.title}}
     </a>
     <button class="btn btn-danger d-inline-block float-end" title="delete task"
             (click)="delete(task)">x</button>

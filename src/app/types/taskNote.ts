@@ -1,8 +1,8 @@
 export enum TaskStatus {
-  Done,
-  InProgress,
-  Pending,
-  Abort,
+  Done= "Done",
+  InProgress = "In progress",
+  Pending = "Pending",
+  Abort = "Aborted",
 }
 
 export interface TaskNote {
@@ -11,6 +11,6 @@ export interface TaskNote {
   description: string;
   status: TaskStatus;
   created: Date;
-  started?: Date;
-  finished?: Date;
+  startDate?: Date;
+  endDate?: Date;
 }

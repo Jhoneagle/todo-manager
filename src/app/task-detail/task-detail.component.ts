@@ -12,8 +12,8 @@ import {CommentService} from "../services/comment.service";
   styleUrls: ['./task-detail.component.css']
 })
 export class TaskDetailComponent implements OnInit {
-  @Input() task?: TaskNote;
-  @Input() comments: TaskComment[] = [];
+  task?: TaskNote;
+  comments: TaskComment[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,11 +29,16 @@ export class TaskDetailComponent implements OnInit {
   getData(): void {
     const taskId = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.taskService.getTask(taskId).subscribe(task => this.task = task);
+    this.taskService.getTask(taskId).subscribe(task => this.task = task );
     this.commentService.getComments(taskId).subscribe(comments => this.comments = comments);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  deleteComment(comment: TaskComment): void {
+    this.comments = this.comments.filter(c => c !== comment);
+    this.commentService.deleteComment(comment.id).subscribe();
   }
 }

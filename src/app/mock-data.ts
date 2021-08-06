@@ -7,21 +7,24 @@ export const TASKS: TaskNote[] = [
     title: 'Tee luonas',
     description: 'Keitä perunat, leikkaa salaatti ja paista kana.',
     status: TaskStatus.Pending,
-    created: new Date()
+    created: new Date(),
   },
   {
     id: 2,
     title: 'Kävelytä koira',
     description: 'Aamuisin ja iltaisin kävely lenkki, jotta koira saa tehtyä asiansa.',
-    status: TaskStatus.InProgress,
-    created: new Date()
+    status: TaskStatus.Done,
+    created: new Date(),
+    startDate: new Date('2021-06-12'),
+    endDate: new Date('2021-07-28'),
   },
   {
     id: 3,
     title: 'Testi',
     description: 'Toimiiko tämä?',
     status: TaskStatus.InProgress,
-    created: new Date()
+    created: new Date(),
+    startDate: new Date(),
   }
 ];
 
