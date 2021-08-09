@@ -1,0 +1,16 @@
+<div>
+  <h3>Comments:</h3>
+
+  <app-comment-form
+    (addComment)="addComment($event)">
+  </app-comment-form>
+
+  <ul class="list-group comments" *ngIf="comments.length">
+    <li *ngFor="let comment of comments" class="list-group-item">
+      <strong>{{comment.title}}</strong>
+      <p>{{comment.content}}</p>
+      <button class="btn btn-danger d-inline-block float-end" title="delete comment"
+              (click)="deleteComment(comment)">x</button>
+    </li>
+  </ul>
+</div>

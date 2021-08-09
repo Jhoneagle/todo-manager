@@ -1,17 +1,21 @@
 <div *ngIf="task">
+
+  <button class="btn btn-warning" (click)="goBack()">go back</button>
+
   <div>
     <h2>{{task.title}}</h2>
     <span class="badge bg-primary">{{task.status}}</span>
   </div>
   <div>
     <span *ngIf="task.startDate">
-      started: {{task.startDate | date:'yyyy-MM-dd'}}
+      started: {{task.startDate | date:'dd.MM.yyyy'}}
     </span>
     <span *ngIf="task.endDate">
-      finished: {{task.endDate | date:'yyyy-MM-dd'}}
+      finished: {{task.endDate | date:'dd.MM.yyyy'}}
     </span>
   </div>
   <p>{{task.description}}</p>
 
-  <button class="btn btn-warning" (click)="goBack()">go back</button>
+  <app-comments></app-comments>
+
 </div>
