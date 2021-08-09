@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {CommentService} from "../services/comment.service";
 import {TaskComment} from "../types/taskComment";
 import {ActivatedRoute} from "@angular/router";
 
@@ -35,5 +34,6 @@ export class CommentFormComponent implements OnInit {
     }
 
     this.addComment.emit(toSave as TaskComment);
+    this.commentForm.reset();
   }
 }

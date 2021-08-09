@@ -1,16 +1,20 @@
-<div>
-  <h3>Comments:</h3>
+<div class="card-box">
+  <h4 class="header-title m-b-30">Comments</h4>
 
-  <app-comment-form
-    (addComment)="addComment($event)">
-  </app-comment-form>
+  <div>
+    <div *ngIf="comments.length">
+      <div class="media m-b-20" *ngFor="let comment of comments">
+        <div class="media-body">
+          <h5 class="mt-0">{{comment.title}}</h5>
+          <p class="font-13 text-muted mb-0">{{comment.content}}</p>
+        </div>
+      </div>
+    </div>
 
-  <ul class="list-group comments" *ngIf="comments.length">
-    <li *ngFor="let comment of comments" class="list-group-item">
-      <strong>{{comment.title}}</strong>
-      <p>{{comment.content}}</p>
-      <button class="btn btn-danger d-inline-block float-end" title="delete comment"
-              (click)="deleteComment(comment)">x</button>
-    </li>
-  </ul>
+    <br />
+
+    <app-comment-form class="media m-b-20"
+      (addComment)="addComment($event)">
+    </app-comment-form>
+  </div>
 </div>

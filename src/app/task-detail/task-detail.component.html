@@ -1,21 +1,37 @@
-<div *ngIf="task">
+<div *ngIf="task" class="row">
 
-  <button class="btn btn-warning" (click)="goBack()">go back</button>
-
-  <div>
-    <h2>{{task.title}}</h2>
-    <span class="badge bg-primary">{{task.status}}</span>
+  <div class="col-lg-8">
+    <div class="card-box task-detail">
+      <div class="media mt-0 m-b-30">
+        <div class="media-body">
+          <h4 class="media-heading mb-0 mt-0">{{task.title}}</h4><span class="badge bg-primary">{{task.status}}</span>
+        </div>
+      </div>
+      <br />
+      <p class="text-muted">{{task.description}}</p>
+      <ul class="list-inline task-dates m-b-0 mt-5">
+        <li *ngIf="task.startDate">
+          <h5 class="m-b-5">Start Date</h5>
+          <p>{{task.startDate | date:'dd.MM.yyyy'}}</p>
+        </li>
+        <li *ngIf="task.endDate">
+          <h5 class="m-b-5">Due Date</h5>
+          <p>{{task.endDate | date:'dd.MM.yyyy'}}</p>
+        </li>
+      </ul>
+      <div class="clearfix"></div>
+      <div class="attached-files mt-4">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="mt-4 text-end">
+              <button type="button" class="btn btn-light waves-effect" (click)="goBack()">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <span *ngIf="task.startDate">
-      started: {{task.startDate | date:'dd.MM.yyyy'}}
-    </span>
-    <span *ngIf="task.endDate">
-      finished: {{task.endDate | date:'dd.MM.yyyy'}}
-    </span>
-  </div>
-  <p>{{task.description}}</p>
 
-  <app-comments></app-comments>
+  <app-comments class="col-lg-4"></app-comments>
 
 </div>
