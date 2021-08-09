@@ -10,21 +10,21 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { MessagesComponent } from './messages/messages.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { CommentsComponent } from './comments/comments.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
-    MessagesComponent,
     TaskDetailComponent,
     TaskFormComponent,
     CommentFormComponent,
-    CommentsComponent
+    CommentsComponent,
+    AlertComponent
   ],
   imports: [
     HttpClientModule,

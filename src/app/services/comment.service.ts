@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { MessageService } from './message.service';
 import {TaskComment} from "../types/taskComment";
+import {AlertService} from "./alert.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,10 @@ export class CommentService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+  constructor(
+    private http: HttpClient,
+    private alertService: AlertService,
+  ) {}
 
   getComments(taskId: number): Observable<TaskComment[]> {
     return this.http.get<TaskComment[]>(`${this.commentsUrl}/?taskId=${taskId}`)
@@ -36,7 +39,7 @@ export class CommentService {
   /** POST: add a new comment to the server */
   addComment(comment: TaskComment): Observable<TaskComment> {
     return this.http.post<TaskComment>(this.commentsUrl, comment, this.httpOptions).pipe(
-      tap((newcomment: TaskComment) => this.log(`added comment w/ title ${comment.title}`)),
+      tap((newcomment: TaskComment) => this.alertService.success(`added comment w/ title ${comment.title}`)),
       catchError(this.handleError<TaskComment>('addComment'))
     );
   }
@@ -44,7 +47,7 @@ export class CommentService {
   /** PUT: update the comment on the server */
   updateComment(comment: TaskComment): Observable<any> {
     return this.http.put(this.commentsUrl, comment, this.httpOptions).pipe(
-      tap(_ => this.log(`updated comment ${comment.title}`)),
+      tap(_ => this.alertService.success(`updated comment ${comment.title}`)),
       catchError(this.handleError<any>('updateComment'))
     );
   }
@@ -54,14 +57,9 @@ export class CommentService {
     const url = `${this.commentsUrl}/${id}`;
 
     return this.http.delete<TaskComment>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted comment id=${id}`)),
+      tap(_ => this.alertService.success(`deleted comment id=${id}`)),
       catchError(this.handleError<TaskComment>('deleteComment'))
     );
-  }
-
-  /** Log a commentService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add(`commentService: ${message}`);
   }
 
   /**
@@ -72,14 +70,9 @@ export class CommentService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
+      console.error(error);
+      this.alertService.error(`${operation} failed: ${error.message}`);
 
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
