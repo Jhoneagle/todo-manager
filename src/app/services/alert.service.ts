@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 import { Alert, AlertType } from '../types/alert';
 
@@ -11,7 +10,7 @@ export class AlertService {
   private subject = new Subject<Alert>();
 
   onAlert(): Observable<Alert> {
-    return this.subject.asObservable().pipe(filter(x => x && x.id === 'alert'));
+    return this.subject.asObservable().pipe();
   }
 
   success(message: string) {
@@ -31,7 +30,6 @@ export class AlertService {
   }
 
   alert(alert: Alert) {
-    alert.id = alert.id || 'alert';
     this.subject.next(alert);
   }
 }
